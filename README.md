@@ -1,0 +1,1 @@
+# faculdade-ADS-p5-APS-Arquitetura_e_Padr-es_de_Projeto_de_Software
