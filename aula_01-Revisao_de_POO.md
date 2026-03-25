@@ -10,6 +10,7 @@
   - [Relacionamentos](#relacionamentos)
     - [Associação](#associação)
     - [Associação por Agregação](#associação-por-agregação)
+    - [Associação por Composição](#associação-por-composição)
 
 > Uma maneira de pensar os problemas é utilizando **conceitos do mundo real**. O componente fundamental é o **objeto** que combina estrutura e comportamento em uma única entidade.
 > - Raumbaugh
@@ -124,3 +125,24 @@ objeto = (
 
 ### Associação por Agregação
 
+&emsp; É uma forma especializada de associação no qual um **todo é relacionado com suas partes**. Também é conhecida como relação de **conteúdo**.
+
+&emsp; Exemplo:
+
+- Objeto: CARRO
+  - modelo: String
+  - anoFabricação: Long
+  - Cardinalidade do Relacionamento: 1..* (um ou vários) --> um CARRO pode ter um ou vários PASSAGEIROS
+
+- Objeto: PASSAGEIRO
+  - nome: String
+  - Cardinalidade do Relacionamento: 0..* (nenhum ou vários) --> um PASSAGEIRO pode estar relacionado a nenhum ou a vários CARROS
+
+### Associação por Composição
+
+&emsp; É uma agregação onde uma classe que está contida na outra **"vive" e constitui a outra**. Se o objeto da classe que contém for destruído, as classes de agregação de composição serão destruídas por consequência, já que fazem parte da outra.
+
+- Objeto: CARRO
+  - modelo: String
+  - anoFabricação: Long
+  - Cardinalidade do Relacionamento: 1 (nenhum ou vários)
