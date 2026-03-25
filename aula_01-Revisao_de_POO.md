@@ -11,8 +11,19 @@
     - [Associação](#associação)
     - [Associação por Agregação](#associação-por-agregação)
     - [Associação por Composição](#associação-por-composição)
+  - [Visibilidade](#visibilidade)
+  - [Delegação](#delegação)
+  - [Herança](#herança)
+  - [Realização](#realização)
+  - [Polimorfismo](#polimorfismo)
+    - [Polimorfismo **Estático** ou **Sobrecarga**](#polimorfismo-estático-ou-sobrecarga)
+    - [Polimorfismo **Dinâmico** ou **Sobreposição**](#polimorfismo-dinâmico-ou-sobreposição)
+  - [Classes Abstratas/Concretas](#classes-abstratasconcretas)
+  - [Imutabilidade](#imutabilidade)
+  - [Pacotes/Namespaces](#pacotesnamespaces)
+  - [Considerações Finais](#considerações-finais)
 
-> Uma maneira de pensar os problemas é utilizando **conceitos do mundo real**. O componente fundamental é o **objeto** que combina estrutura e comportamento em uma única entidade.
+> "Uma maneira de pensar os problemas é utilizando **conceitos do mundo real**. O componente fundamental é o **objeto** que combina estrutura e comportamento em uma única entidade."
 > - Raumbaugh
 
 ## Orientação a Objetos
@@ -145,4 +156,83 @@ objeto = (
 - Objeto: CARRO
   - modelo: String
   - anoFabricação: Long
-  - Cardinalidade do Relacionamento: 1 (nenhum ou vários)
+  - Cardinalidade do Relacionamento: 1 (nenhum ou vários) --> um CARRO pode ter um ou várias PEÇAS
+
+- Objeto: PEÇA
+  - identificador: String
+  - Cardinalidade do Relacionamento: 1 (um) --> uma PEÇA pertence a um CARRO
+
+## Visibilidade
+
+&emsp; Em Java, existem 3 modificadores (private, protected, public) e 4 níveis de visibilidade:
+
+- **Private**: a única classe que tem acesso ao tributo é a própria classe que o define.
+- **Protected**: classes que derivam/estendem da classe com este atributo terão acesso a ela.
+- **Public**: Todos tem acesso.
+- **Default**: todas as classes que estiverem no mesmo pacote tem acesso a um atributo default.
+
+## Delegação
+
+- **Chamada a um objeto para invocar um de seus métodos**, ativando um comportamento descrito por sua classe
+- Também poder ser **direcionada diretamente a uma classe**
+- Pode alterar ou não o **estado** do objeto invocado
+
+## Herança
+
+&emsp; Permite que classes compartilhem atributos e métodos, com a intenção de reaproveitamento de código e comportamento padronizado deixando uma parte do código dedicada exclusivamente para fazer operações específicas.
+
+&emsp; Exemplo:
+
+- Generalização: COMPONENTE
+- Especializações: BOTÃO e PAINEL
+
+&emsp; A classe COMPONENTE é uma **generalização** de BOTÃO e PAINEL, contendo comportamentos que se aplicam aos dois. Em paralelo, BOTÃO e PAINEL são **especializações** de COMPONENTE, contendo funções exclusivas a elas.
+
+## Realização
+
+&emsp; Realizar uma interface significa **seguir um "contrato"**, onde todos os métodos da interface serão implementados pela classe que a realiza. Isso define **o que** uma classe faz e não **como faz**.
+
+&emsp; É chamada de **interface** pois é a maneira pela qual podemos conversar com outros componentes. Em comparação, é da mesma forma que usamos uma interface, deixando os cálculos em segundo plano e exibindo apenas aquilo que interessa.
+
+&emsp; Exemplo:
+
+- Interface: COMPONENTE
+  - Método: + desenhar(): void
+- Classe: BOTÃO
+- Classe: PAINEL
+
+&emsp;&emsp; As classes BOTÃO e PAINEL **realizam/implementam** a interface COMPONENTE, sendo obrigados a implementar seus métodos para uso.
+
+## Polimorfismo
+
+> "Qualidade ou estado de ser capaz de assumir diferentes formas".
+
+&emsp; O polimorfismo denota a uma situação onde um objeto pode se comportar de maneiras diferentes ou receber uma mensagem.
+
+### Polimorfismo **Estático** ou **Sobrecarga**
+
+&emsp; Uma mesma operação é implementada várias vezes na mesma classe.
+
+### Polimorfismo **Dinâmico** ou **Sobreposição**
+
+&emsp; Acontece na herança, quando um método da subclasse sobrepõe o método da classe de origem. Agora o método escolhido se dá em tempo de execução e não acarreta em mais tempo de compilação.
+
+## Classes Abstratas/Concretas
+
+- **Abstratas**: não permitem realizar qualquer tipo de instância. São feitas especialmente **para serem modelos** para suas classes derivadas.
+- **Concretas**: são as classes derivadas que, via de regra, deverão sobrescrever os métodos para realizar a implementação dos mesmos.
+
+## Imutabilidade
+
+&emsp; Objetos imutáveis são aqueles que **suas instâncias não podem ter seu estado alterado após a criação** e nem mudam durante a aplicação. Exemplos dessas classes são facilmente encontradas em bibliotecas nativas do Java, como a própria classe String.
+
+## Pacotes/Namespaces
+
+&emsp; É um delimitador abstrato que fornece um **contexto** para os itens que ele armazena (nomes, termos técnicos, conceitos, etc). 
+
+&emsp; Permite **eliminar a ambiguidade** para itens que possuem o mesmo nome, mas que estão em **pacotes/namespace/locais** diferentes.
+
+## Considerações Finais
+
+- Compreender os conceitos básicos de orientação a objetos é fundamental para entender padrões de projeto.
+- Os conceitos da OO servem para todas as linguagens que utilizam este paradigma, mas nem todas implementam todos os conceitos.
