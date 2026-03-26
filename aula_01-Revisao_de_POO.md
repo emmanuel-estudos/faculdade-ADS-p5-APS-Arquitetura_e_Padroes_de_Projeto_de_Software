@@ -1,8 +1,8 @@
-# Revisão de Aprofundamento de Conceitos
+# Conceitos de Orientação a Objetos
 
 ## Tópicos Abordados
 
-- [Revisão de Aprofundamento de Conceitos](#revisão-de-aprofundamento-de-conceitos)
+- [Conceitos de Orientação a Objetos](#conceitos-de-orientação-a-objetos)
   - [Tópicos Abordados](#tópicos-abordados)
   - [Orientação a Objetos](#orientação-a-objetos)
   - [Objeto](#objeto)

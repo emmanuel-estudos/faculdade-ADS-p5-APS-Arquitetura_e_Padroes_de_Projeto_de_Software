@@ -42,19 +42,19 @@
 
 # Arquitetura e Padrões de Projetos de Software
 
-> **Última sincronização:** 25/03/2026 16:31:31
+> **Última sincronização:** 25/03/2026 20:50:47
 
 ## Sumário de Aulas
 
-- Aula 01 - [Revisão de Aprofundamento de Conceitos](#revisão-de-aprofundamento-de-conceitos)
+- Aula 01 - [Conceitos de Orientação a Objetos](#conceitos-de-orientação-a-objetos)
 
 ---
 
-## Revisão de Aprofundamento de Conceitos
+## Conceitos de Orientação a Objetos
 
 ### Tópicos Abordados
 
-- [Revisão de Aprofundamento de Conceitos](#revisão-de-aprofundamento-de-conceitos)
+- [Conceitos de Orientação a Objetos](#conceitos-de-orientação-a-objetos)
   - [Tópicos Abordados](#tópicos-abordados)
   - [Orientação a Objetos](#orientação-a-objetos)
   - [Objeto](#objeto)
