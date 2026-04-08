@@ -42,11 +42,15 @@
 
 # Arquitetura e Padrões de Projetos de Software
 
-> **Última sincronização:** 25/03/2026 20:50:47
+> **Última sincronização:** 07/04/2026 23:30:20
 
 ## Sumário de Aulas
 
 - Aula 01 - [Conceitos de Orientação a Objetos](#conceitos-de-orientação-a-objetos)
+- Aula 02 - [Princípios Solid](#princípios-solid)
+- Aula 03 - [Strategy](#strategy)
+- Aula 04 - [Changing](#changing)
+- Aula 05 - [Template](#template)
 
 ---
 
@@ -288,6 +292,85 @@ objeto = (
 
 - Compreender os conceitos básicos de orientação a objetos é fundamental para entender padrões de projeto.
 - Os conceitos da OO servem para todas as linguagens que utilizam este paradigma, mas nem todas implementam todos os conceitos.
+
+
+---
+
+## Princípios Solid
+
+---
+
+## Strategy
+
+---
+
+## Changing
+
+- Aula explicada: 31/03/2026
+
+### Problema
+
+&emsp; Imagine um site de compras o-commerce
+
+#### Como podemos modelar uma solução para esse problema?
+
+- **Adição** de novas formas de pagamento
+- **Reordenação** das formas de pagamento referencial
+- **Execução** do pagamento verificando em cada uma das formas se há saldo disponível
+
+![Diagrama-Aula_04-Exemplo](./Diagramas/aula_04-exemplo.png)
+
+<details>
+<summary>Clique para ver o código fonte do diagrama (Mermaid)</summary>
+
+
+```ts
+export abstract class Animal {
+    protected idade: number;
+    public especie: string;
+    constructor(especie: string, idade: number) {
+        this.especie = especie;
+        this.idade = idade;
+    }
+
+    public dormir(): void {
+        console.log("ZzzzZzzzZzZzZzZzZ")
+    }
+
+    abstract emitirSom(): string;
+}
+
+export interface IPet {
+    nome: string;
+    brincar(): void;
+}
+
+export class Cachorro extends Animal implements IPet {
+    public nome: string;
+
+    constructor(especie: string, idade: number, nome: string) {
+        super(especie, idade);
+        this.nome = nome;
+    }
+
+    private enterrarOsso(): void {
+        console.log("Osso enterrado com sucesso.");
+    }
+
+    public brincar(): void {
+        console.log(`${this.nome} está brincando com uma bolinha.`)
+    }
+
+    public emitirSom(): string {
+        return "Au Au Au!"
+    }
+}
+```
+
+---
+
+## Template
+
 
 
 ---
