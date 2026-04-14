@@ -42,15 +42,18 @@
 
 # Arquitetura e Padrões de Projetos de Software
 
-> **Última sincronização:** 07/04/2026 23:30:20
+> **Última sincronização:** 14/04/2026 10:12:32
 
 ## Sumário de Aulas
 
 - Aula 01 - [Conceitos de Orientação a Objetos](#conceitos-de-orientação-a-objetos)
 - Aula 02 - [Princípios Solid](#princípios-solid)
-- Aula 03 - [Strategy](#strategy)
-- Aula 04 - [Changing](#changing)
-- Aula 05 - [Template](#template)
+- Aula 03 - [Strategy: Padrões Comportamentais (GoF)](#strategy-padrões-comportamentais-gof)
+- Aula 04 - [Observer](#observer)
+- Aula 05 - [State](#state)
+- Aula 06 - [Changing of Responsibility](#changing-of-responsibility)
+- Aula 07 - [Template](#template)
+- Aula 08 - [Título não encontrado](#título-não-encontrado)
 
 ---
 
@@ -72,8 +75,8 @@
   - [Herança](#herança)
   - [Realização](#realização)
   - [Polimorfismo](#polimorfismo)
-    - [Polimorfismo **Estático** ou **Sobrecarga**](#polimorfismo-estático-ou-sobrecarga)
-    - [Polimorfismo **Dinâmico** ou **Sobreposição**](#polimorfismo-dinâmico-ou-sobreposição)
+    - [Polimorfismo Estático ou Sobrecarga](#polimorfismo-estático-ou-sobrecarga)
+    - [Polimorfismo Dinâmico ou Sobreposição](#polimorfismo-dinâmico-ou-sobreposição)
   - [Classes Abstratas/Concretas](#classes-abstratasconcretas)
   - [Imutabilidade](#imutabilidade)
   - [Pacotes/Namespaces](#pacotesnamespaces)
@@ -265,11 +268,11 @@ objeto = (
 
 &emsp; O polimorfismo denota a uma situação onde um objeto pode se comportar de maneiras diferentes ou receber uma mensagem.
 
-#### Polimorfismo **Estático** ou **Sobrecarga**
+#### Polimorfismo Estático ou Sobrecarga
 
 &emsp; Uma mesma operação é implementada várias vezes na mesma classe.
 
-#### Polimorfismo **Dinâmico** ou **Sobreposição**
+#### Polimorfismo Dinâmico ou Sobreposição
 
 &emsp; Acontece na herança, quando um método da subclasse sobrepõe o método da classe de origem. Agora o método escolhido se dá em tempo de execução e não acarreta em mais tempo de compilação.
 
@@ -300,11 +303,147 @@ objeto = (
 
 ---
 
-## Strategy
+## Strategy: Padrões Comportamentais (GoF)
+
+### Tópicos Abordados
+- [Strategy: Padrões Comportamentais (GoF)](#strategy-padrões-comportamentais-gof)
+  - [Tópicos Abordados](#tópicos-abordados)
+  - [Problema](#problema)
+  - [Padrão Strategy](#padrão-strategy)
+  - [Diagrama](#diagrama)
+  - [Resolução do Problema](#resolução-do-problema)
+
+### Problema
+
+&emsp; Em uma aplicação de vendas, um Pedido possui 3 formas de entrega:
+
+- PAC
+- Sedex
+- Transportadora
+
+&emsp; Dentro desses formatos, ainda existem regras específicas como:
+
+- Produtos entregues por **PAC** são gratuitos dependendo do peso. **Até 1kg é grátis**, além disso é cobrado **R$: 15,00 (fixo)**.
+- Produtos entregues por **Sedex** são, no mínimo, **R\$: 50,00 + R\$: 2,50 por Kg**.
+- Produtos entregues por **Transportadora** tem custo de **R\$: 35,00 + R\$: 4,00 por Kg**.
+
+&emsp; Como desenhar uma solução para esse cenário? E se, por acaso, surgir uma nova **modalidade de entrega**? E se essa nova modalidade tiver regras ainda mais específicas para calcular o frete? Distância pode ser mais de um fator determinante para o valor.
+
+### Padrão Strategy
+
+&emsp; Definir uma família de algoritmos, encapsular cada uma delas e torná-las intercambiáveis. Strategy **permite que o algoritmo varie independentemente dos clientes que o utilizam**.
+
+&emsp; Este pedrão sugere que **algoritmos parecidos** (métodos de cálculo de frete) **sejam separados de quem os utiliza** (Pedido).
+
+&emsp; Este padrão, além de **encapsular os algoritmos da mesma família**, também permite a **reutilização de código**.
+
+&emsp; Caso existam **vários tipos de transportadora, usando o mesmo algoritmo**, essa estratégia pode ser reutilizada.
+
+&emsp; Estratégias eliminam **comandos adicionais da linguagem de programação**. Isso possibilita escolher diferentes implementações em tempo de execução.
+
+### Diagrama
+
+
+
+### Resolução do Problema
+
+&emsp; Primeiramente, **definimos uma interface** para todos os **algoritmos da mesma família**:
+
+```java
+public interface FreteStrategy {
+  BigDecimal calcularFrete(Pedido pedido);
+}
+```
+
+&emsp; Em seguida, definimos as **estratégias concretas de cálculo de cada frete**.
+
+```java
+public class FretePAC implements FreteStrategy {
+
+  public BigDecimal calcularFrete(Pedido pedido) {
+
+    // caso pese menos que 1Kg
+    if (pedido.getPeso() < 1) {
+        return new BigDecimal(0);
+    }
+
+    // caso pese mais de 1Kg
+    return new BigDecimal(15);
+  }
+}
+```
+
+```java
+public class FreteSedex {
+    
+    public BigDecimal calcularFrete(Pedido pedido) {
+
+        return new BigDecimal(50 + 2.50 * pedido.getPeso());
+    }
+}
+```
+
+```java
+public class FreteTransportadora {
+
+    public BigDecimal calcularFrete(Pedido pedido) {
+
+        return new BigDecimal(35 + 4 * pedido.getPeso());
+    }
+}
+```
+
+```java
+public class Pedido {
+    private String nome;
+    private int quantidade;
+    private double peso;
+
+    public Pedido(String nome, int quantidade, double peso) {
+        this.nome = nome;
+        this.quantidade = quantidade;
+        this.peso = peso;
+    }
+
+    // Getters e Setters
+    public String getNome() { 
+        return nome; 
+    }
+
+    public void setNome(String nome) {
+         this.nome = nome; 
+    }
+
+    public int getQuantidade() {
+        return quantidade; 
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade; 
+    }
+
+    public double getPeso() {
+         return peso; 
+    }
+
+    public void setPeso(double peso) {
+         this.peso = peso; 
+    }
+}
+```
+
 
 ---
 
-## Changing
+## Observer
+
+---
+
+## State
+
+---
+
+## Changing of Responsibility
 
 - Aula explicada: 31/03/2026
 
@@ -370,6 +509,10 @@ export class Cachorro extends Animal implements IPet {
 ---
 
 ## Template
+
+
+
+---
 
 
 

@@ -16,8 +16,8 @@
   - [Herança](#herança)
   - [Realização](#realização)
   - [Polimorfismo](#polimorfismo)
-    - [Polimorfismo **Estático** ou **Sobrecarga**](#polimorfismo-estático-ou-sobrecarga)
-    - [Polimorfismo **Dinâmico** ou **Sobreposição**](#polimorfismo-dinâmico-ou-sobreposição)
+    - [Polimorfismo Estático ou Sobrecarga](#polimorfismo-estático-ou-sobrecarga)
+    - [Polimorfismo Dinâmico ou Sobreposição](#polimorfismo-dinâmico-ou-sobreposição)
   - [Classes Abstratas/Concretas](#classes-abstratasconcretas)
   - [Imutabilidade](#imutabilidade)
   - [Pacotes/Namespaces](#pacotesnamespaces)
@@ -209,11 +209,11 @@ objeto = (
 
 &emsp; O polimorfismo denota a uma situação onde um objeto pode se comportar de maneiras diferentes ou receber uma mensagem.
 
-### Polimorfismo **Estático** ou **Sobrecarga**
+### Polimorfismo Estático ou Sobrecarga
 
 &emsp; Uma mesma operação é implementada várias vezes na mesma classe.
 
-### Polimorfismo **Dinâmico** ou **Sobreposição**
+### Polimorfismo Dinâmico ou Sobreposição
 
 &emsp; Acontece na herança, quando um método da subclasse sobrepõe o método da classe de origem. Agora o método escolhido se dá em tempo de execução e não acarreta em mais tempo de compilação.
 

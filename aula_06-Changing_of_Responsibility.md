@@ -1,4 +1,4 @@
-# Changing
+# Changing of Responsibility
 
 - Aula explicada: 31/03/2026
 

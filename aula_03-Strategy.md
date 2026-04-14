@@ -1,7 +1,7 @@
-# Strategy -- Padrões Comportamentais -- GoF
+# Strategy: Padrões Comportamentais (GoF)
 
 ## Tópicos Abordados
-- [Strategy -- Padrões Comportamentais -- GoF](#strategy----padrões-comportamentais----gof)
+- [Strategy: Padrões Comportamentais (GoF)](#strategy-padrões-comportamentais-gof)
   - [Tópicos Abordados](#tópicos-abordados)
   - [Problema](#problema)
   - [Padrão Strategy](#padrão-strategy)
