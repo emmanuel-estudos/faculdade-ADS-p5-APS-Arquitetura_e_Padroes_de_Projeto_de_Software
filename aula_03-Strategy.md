@@ -1,6 +1,7 @@
 # Strategy: Padrões Comportamentais (GoF)
 
 ## Tópicos Abordados
+
 - [Strategy: Padrões Comportamentais (GoF)](#strategy-padrões-comportamentais-gof)
   - [Tópicos Abordados](#tópicos-abordados)
   - [Problema](#problema)
@@ -38,7 +39,7 @@
 
 ## Diagrama
 
-
+- Inserir Diagrama
 
 ## Resolução do Problema
 

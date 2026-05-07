@@ -1,48 +1,74 @@
+<details>
+<summary><i>Configurações de Estilo do Relatório</i></summary>
+
 <style>
-    /* Reiniciando a Contagem Geral */
-    body {
-        counter-reset: contadorh1 1 contadorLegenda 0;
-    }
+/* Reiniciando a Contagem Geral */
+body {
+counter-reset: contadorh1 1 contadorLegenda 0 contadorBloco 0;
+}
 
-    /* Aplica o estilo para H1 e informa que a contagem de H2 deve começar do 0 sempre que um H1 aparecer */
-    h1 {
-        counter-reset: contadorh2;
-        text-align: center;
-    }
+/* Aplica o estilo para H1 e informa que a contagem de H2 deve começar do 0 sempre que um H1 aparecer */
+h1 {
+counter-reset: contadorh2;
+text-align: center;
+}
 
-    h1::before {
-        counter-increment: contadorh1;
-    }
+h1::before {
+counter-increment: contadorh1;
+}
 
-    /* Aplica o estilo para H2 e informa que a contagem de H3 deve começar do 0 sempre que um H2 aparecer */
-    h2 {
-        counter-reset: contadorh3;
-    }
+/* Aplica o estilo para H2 e informa que a contagem de H3 deve começar do 0 sempre que um H2 aparecer */
+h2 {
+counter-reset: contadorh3;
+}
 
-    h2::before {
-        counter-increment: contadorh2;
-        content: counter(contadorh2) ". ";
-    }
+h2::before {
+counter-increment: contadorh2;
+content: counter(contadorh2) ". ";
+}
 
-    /* Aplica estilo para H3 */
-    h3::before {
-        counter-increment: contadorh3;
-        content: counter(contadorh2) "." counter(contadorh3) ". ";
-    }
+/* Aplica estilo para H3 */
+h3::before {
+counter-increment: contadorh3;
+content: counter(contadorh2) "." counter(contadorh3) ". ";
+}
 
-    /* Legendas */
-    .legenda::before {
+/* Legendas */
+.legenda::before {
     /* Incrementa o contador toda vez que a classe aparece */
     counter-increment: contadorLegenda;
     /* Define o texto automático */
     content: "Figura " counter(contadorLegenda) ": ";
     font-weight: bold;
 }
+
+/* Garante que o itálico do code-snippet não remova o negrito do contador */
+.legenda {
+    display: block;
+    margin-top: 5px;
+}
+
+/* Legenda específica para Blocos de Código */
+.bloco-de-codigo::before {
+/* Incrementa o contador específico para códigos */
+counter-increment: contadorBloco;
+/* Define o prefixo conforme solicitado */
+content: "Bloco de Código " counter(contadorBloco) ": ";
+font-weight: bold;
+}
+
+/* Garante que o itálico do code-snippet não remova o negrito do contador */
+.bloco-de-codigo {
+    display: block;
+    margin-top: 5px;
+}
 </style>
+</details>
+
 
 # Arquitetura e Padrões de Projetos de Software
 
-> **Última sincronização:** 14/04/2026 10:12:32
+> **Última sincronização:** 28/04/2026 10:21:21
 
 ## Sumário de Aulas
 
@@ -54,6 +80,8 @@
 - Aula 06 - [Changing of Responsibility](#changing-of-responsibility)
 - Aula 07 - [Template](#template)
 - Aula 08 - [Título não encontrado](#título-não-encontrado)
+- Aula 09 - [Command](#command)
+- Aula 10 - [Factory Method & Abstract Factory](#factory-method-abstract-factory)
 
 ---
 
@@ -306,6 +334,7 @@ objeto = (
 ## Strategy: Padrões Comportamentais (GoF)
 
 ### Tópicos Abordados
+
 - [Strategy: Padrões Comportamentais (GoF)](#strategy-padrões-comportamentais-gof)
   - [Tópicos Abordados](#tópicos-abordados)
   - [Problema](#problema)
@@ -343,7 +372,7 @@ objeto = (
 
 ### Diagrama
 
-
+- Inserir Diagrama
 
 ### Resolução do Problema
 
@@ -515,6 +544,28 @@ export class Cachorro extends Animal implements IPet {
 ---
 
 
+
+---
+
+## Command
+
+
+
+---
+
+## Factory Method & Abstract Factory
+
+### Problema
+
+&emsp; A classe **Application** somente sabe **quando** um documento deve ser criado, e não **que tipo** de documento criar. Como resolver o problema?
+
+### Solução
+
+&emsp; Defiir uma operação abstrata em **Application** que retorna uma instância de **Document** (genérico)
+
+### Factory Method
+
+#### Consequências
 
 ---
 
